@@ -1,4 +1,4 @@
-/*import React, { useState } from 'react';
+import React, { useState } from 'react';
 import './CSS/contact.css'
 import { ToastContainer, toast } from 'react-toastify';
 import emailjs from 'emailjs-com';
@@ -12,12 +12,8 @@ const Contact = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // const sendingSuccess = (msg) => toast.success(msg, {
-    //     // position: toast.POSITION.TOP_CENTER,
-    //     className: "toast-message",
-    // });
+   
     const sendingFailed = (msg) => toast.error(msg, {
-        // position: toast.POSITION.TOP_CENTER,
         className: "toast-message",
     });
 
@@ -38,6 +34,7 @@ const Contact = () => {
                 emailjs.send('service_o90mmhl','template_iz6xzia', templateParams, 'nKA3snbeOTDH68lHM')
                     .then((response) => {
                         console.log('SUCCESS!', response.status, response.text);
+                        alert("SUCCESS! your message is send to team member");
                         setSuccessMessage('Your query has been sent successfully!');
                         setName('');
                         setEmail('');
@@ -90,99 +87,6 @@ const Contact = () => {
             </form>
             {successMessage && <p className="success-message">{successMessage}</p>}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-        </div>
-    );
-};
-
-export default Contact;
-*/
-import React, { useState } from 'react';
-import './CSS/contact.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import emailjs from 'emailjs-com';
-
-const Contact = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
-
-    const notifySuccess = () => toast.success("Message sent successfully!");
-    const notifyError = (msg) => toast.error(msg);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        // Validation check
-        if (!name || !email || !message) {
-            notifyError("Please fill in all fields.");
-            return;
-        }
-
-        setLoading(true);
-
-        const templateParams = {
-            from_name: name,
-            from_email: email,
-            name: 'Team Member',
-            message: message,
-        };
-
-        try {
-            await emailjs.send(
-                'service_o90mmhl', 
-                'template_iz6xzia', 
-                templateParams, 
-                'nKA3snbeOTDH68lHM'
-            );
-            notifySuccess();
-            setName('');
-            setEmail('');
-            setMessage('');
-        } catch (error) {
-            notifyError("Failed to send message. Please try again.");
-            console.error("Error sending email:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    return (
-        <div className="contact-form">
-            <h2>Contact Us</h2>
-            <ToastContainer />
-            <form onSubmit={handleSubmit}>
-                <div className="contact-field">
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                        placeholder="Enter Your Name"
-                    />
-                </div>
-                <div className="contact-field">
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        placeholder="Enter Your Email"
-                    />
-                </div>
-                <div className="contact-field">
-                    <textarea
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        required
-                        placeholder="Enter Your Message"
-                    />
-                </div>
-                <button type="submit" disabled={loading}>
-                    {loading ? <div className="spinner"></div> : 'Send'}
-                </button>
-            </form>
         </div>
     );
 };
