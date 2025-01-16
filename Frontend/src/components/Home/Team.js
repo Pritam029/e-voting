@@ -102,7 +102,7 @@ const Team = () => {
                 {<div className='Team-Content-Card'>
                     <img src={image4} className='image'></img>
                     <h3>Tiyasa Saha | <span>Front-End Developer</span></h3>
-                    <p>Enthusiastic Software Developer currenly pursuing BTech in Information Technology, proficient in Data Structure,Python,UI/UX and Java.Skilled in creating new interactive designs.</p>
+                    <p>Enthusiastic Software Developer currenly pursuing BTech in Information Technology, proficient in Data Structure,Python and Java.Skilled in creating new interactive designs.</p>
                     <SocialIcon className='SocialIcon' style={{ height: "30px", width: "30px" }} href="https://www.linkedin.com/in/tiyasa-saha-b09607273" target='_blank' url="www.linkedin.com" />
                     <SocialIcon className='SocialIcon' style={{ height: "30px", width: "30px" }} href="https://github.com/Tiyasa7" target='_blank' url="www.github.com" />
                     <SocialIcon className='SocialIcon' style={{ height: "30px", width: "30px" }} href="https://www.facebook.com/profile.php?id=100077086213824&mibextid=ZbWKwL" target='_blank' url="www.facebook.com" />
