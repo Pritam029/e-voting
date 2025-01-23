@@ -66,7 +66,7 @@ const UpcomingFeatures = () => {
                     <h5><strong>Mobile OTP</strong></h5>
                     <p>We Will Implement a one-time password sent to voters' mobile phones for secure authentication.</p>
                 </div>
-                <div className='Features-Content-Card' ref={revealRefTop}>
+                <div className='Features-Content-Card' ref={revealRefBottom}>
                     <h5><strong>Face Matching during Voting</strong></h5>
                     <p>Enhance security by verifying voter identity through facial recognition during the voting process.</p>
                 </div>
